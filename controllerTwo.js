@@ -1,6 +1,7 @@
-(function () {
-    'use strict';
-    
+var app = angular.module('myApp')
+
+app.controller('controllerTwo', function ($scope) {
+
     var CAP = 1000000000000;
     
     var output = document.getElementById('output'),
@@ -32,4 +33,5 @@
         }
         
         output.innerHTML = getAllFactorsFor(val).join(', ');
-    };
+    }
+});
