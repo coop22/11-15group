@@ -1,6 +1,7 @@
 var app = angular.module('myApp')
 
-app.controller('controllerTwo', function ($scope) {
+app.controller('controllerTwo', function ($scope, RedditFactory) {
+    $scope.savedText = RedditFactory.savedText;
 
     var CAP = 1000000000000;
     
