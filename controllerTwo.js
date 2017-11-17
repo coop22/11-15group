@@ -3,18 +3,20 @@ var app = angular.module('myApp')
 app.controller('controllerTwo', function ($scope, RedditFactory) {
     $scope.savedText = RedditFactory.savedText;
 
+    //set max value
     var CAP = 1000000000000;
     
-    var output = document.getElementById('output'),
-        input = document.getElementById('theNumber'),
-        findBtn = document.getElementById('findBtn');
+    //get elements by ids
     
-    input.setAttribute('maxlength', CAP.toString().length);
-    input.setAttribute('placeholder', 'Enter a number less than ' + CAP);
+    //set max lengths and placeholder    
+    // input.setAttribute('maxlength', CAP.toString().length);
+    // input.setAttribute('placeholder', 'Enter a number less than ' + CAP);
 
+    //set empty array to hold factors returned for i
     function getAllFactorsFor(remainder) {
         var factors = [], i;
         
+        //run the loop using modulus operator to get factorization
         for (i = 2; i <= remainder; i++) {
             while ((remainder % i) === 0) {
                 factors.push(i);
@@ -22,17 +24,19 @@ app.controller('controllerTwo', function ($scope, RedditFactory) {
             }
         }
         
+        //return your stuff in the array
         return factors;
     }
 
-    findBtn.onclick = function (event) {
-        var val = +(input.value),
+    
+    $scope.findPrimes = function (event) {
+        var val = + $scope.input,
             result;
         
         if (isNaN(val) || val > CAP) {
             return;
         }
         
-        output.innerHTML = getAllFactorsFor(val).join(', ');
+        $scope.output = getAllFactorsFor(val).join(', ');
     }
 });
